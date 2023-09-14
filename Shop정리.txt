@@ -1,0 +1,39 @@
+1. localStorage : 반영구 자료 저장, 문자 데이터로만 저장가능
+    객체나 배열 저장시 JSON.stringify(), 가져올땐 JSON.parse() 사용
+
+2. 링크 이동 : <Link to='/'></Link> 
+
+3. useNavigate() : 페이지 이동 도와주는 함수
+    navigate('/경로')
+
+4. 라우팅 : 페이지 구분 도와줌, react-router-dom 설치, Route는 각각의 페이지 설정
+    /detail/:id -> url 파라미터
+    nested Route : 라우트 안에 라우트
+        nested 된 라우트 들은 어디에 보여줄지 작성해야됨 -> 컨테이너에 <Outlet> 작성(About.js 참조)
+        위에 꺼랑 같이 보여줌, 페이지에서 어느 부분만 바꿔야될때 사용하면 편리
+
+5. ajax : 서버와 데이터 교환
+    원래는 fetch 사용 -> JSON 형식 변환 불편함 -> axios 사용하면 알아서 해줌
+    axios : ajax 요청 쉽게 해주는 라이브러리
+
+6. usePrams() : url 파라미터 가져옴, let {작명} = useParams();
+
+7. useEffect() : lifecycle 별로 실행, 시간 오래걸리는 코드 작성
+    1) 일단 페이지 로딩시 실행되고 그 다음엔 실행조건에 맞게 실행
+    2) return 안의 코드는 useEffect 안의 코드 실행되기 전에 실행됨
+
+8. props : 다른 컴포넌트에서 공유받은 데이터, 부모에서 자식 컴포넌트로 전송, 받은쪽에서 수정안됨
+    props 여러개 하면 불편, 자식에서 부모로 전송 못해서 불편 -> Context API, Redux 사용
+
+9. Redux 사용법 
+    1) store.js에서 state 모두 정의
+    2) createSlice로 선언, name과 initialState 정의, 변경함수도 여기 안에 만듦
+    3) 변경함수 매개변수 action : 받아온거 다 action에 담음 -> action.payload로 사용법
+    4) 변경함수 export let { 함수명 } = name.action 해줘야됨
+    5) 변경함수 사용하는 파일에서 useDispatch(변경함수명()) 으로 사용
+
+10. lazy 로딩
+    1) SPA인 리액트는 html 하나만 로딩하고 하나의 큰 js에 모든 기능들 들어있음 -> 한번에 로딩하면 오래걸림
+        처음 로딩할 필요없는 js 들은 필요할 때 로딩하게 해줌 -> 나중에 로딩 시 사이트 내에서 별도의 js 파일로 분리됨
+    2) lazy 로딩할 컴포넌트는 나중에 로딩시 지연시간 발생 -> 이때 Suspense 써서 로딩하는 동안 보여줄 화면 설정 가능
+    3) lazy 로딩할 컴포넌트를 Suspense로 감싸면 됨

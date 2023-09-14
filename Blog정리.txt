@@ -1,0 +1,14 @@
+1. State : state[ A, B ] = useState(C); state는 A에 저장 B는 state변경함수 C에 state 기본값
+    1) 자료를 잠깐 저장, 저장된 내용 변경되면 자동 재랜더링 -> 성능에 영향
+    2) 자주 변경되는 것들 state로 만듦
+    3) JS는 근처 state를 묶어서 한번에 처리 -> 순서대로 실행하고 싶으면 setTimout 같은거 써서 실행
+    4) 배열, 객체 수정할때는 복사본 만들어서 하는게 좋음 -> state도 마찬가지 -> let copy = [...A]
+
+2. 컴포넌트 return는 하나의 div로 묶음, return안에서 if문 대신 삼항연산자 씀, 반복되는 div는 map 사용 
+
+3. 컴포넌트 : 반복적인 html 축약, 큰 페이지 만들때(코드 길어질때), 자주 변경되는 것 만들때
+    1) function 만들기
+    2) return() 안에 html 담기
+    3) <함수명></함수명> 으로 사용  
+    
+    
